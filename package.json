@@ -1,0 +1,30 @@
+{
+  "name": "ccstatusline-budget-widgets",
+  "version": "1.0.0",
+  "description": "Budget tracking and peak hours widgets for ccstatusline",
+  "bin": {
+    "ccstatusline-budget-widgets": "./install.js"
+  },
+  "keywords": [
+    "ccstatusline",
+    "claude",
+    "claude-code",
+    "statusline",
+    "widgets",
+    "budget",
+    "usage"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "actionk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/actionk/ccstatusline-budget-widgets"
+  },
+  "files": [
+    "install.js",
+    "widgets/"
+  ]
+}
