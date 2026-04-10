@@ -1,6 +1,11 @@
 #!/usr/bin/env node
-// 5-hour session usage with surplus/deficit indicator
-// Shows: "5h: 32% ↓34%" (↓ = under expected, ↑ = over expected)
+// 5-hour session usage with surplus/deficit indicator and time remaining
+// Shows: "5h: 32% ↓34% 1h23m" (↓ = under expected, ↑ = over expected)
+function fmtTime(secs) {
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  return h > 0 ? `${h}h${m}m` : `${m}m`;
+}
 let input = '';
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', (chunk) => input += chunk);
@@ -19,6 +24,7 @@ process.stdin.on('end', () => {
       if (elapsed > 0 && remaining > 0) {
         const surplus = Math.round((elapsed / (5 * 3600)) * 100 - pct);
         out += surplus > 0 ? ` \u2193${surplus}%` : surplus < 0 ? ` \u2191${-surplus}%` : ` \u21940%`;
+        out += ` ${fmtTime(remaining)}`;
       }
     }
     process.stdout.write(out);

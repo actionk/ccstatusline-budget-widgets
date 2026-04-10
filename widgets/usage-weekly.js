@@ -1,6 +1,12 @@
 #!/usr/bin/env node
-// Weekly usage with surplus/deficit indicator
-// Shows: "Week: 27% ↓9%" (↓ = under expected, ↑ = over expected)
+// Weekly usage with surplus/deficit indicator and time remaining
+// Shows: "Week: 27% ↓9% 2d3h" (↓ = under expected, ↑ = over expected)
+function fmtTime(secs) {
+  const d = Math.floor(secs / 86400);
+  const h = Math.floor((secs % 86400) / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  return d > 0 ? `${d}d${h}h` : h > 0 ? `${h}h${m}m` : `${m}m`;
+}
 let input = '';
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', (chunk) => input += chunk);
@@ -19,6 +25,7 @@ process.stdin.on('end', () => {
       if (elapsed > 0 && remaining > 0) {
         const surplus = Math.round((elapsed / (7 * 24 * 3600)) * 100 - pct);
         out += surplus > 0 ? ` \u2193${surplus}%` : surplus < 0 ? ` \u2191${-surplus}%` : ` \u21940%`;
+        out += ` ${fmtTime(remaining)}`;
       }
     }
     process.stdout.write(out);
