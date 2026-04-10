@@ -2,6 +2,8 @@
 
 Custom widgets for [ccstatusline](https://github.com/sirmalloc/ccstatusline) that help you track Claude Code usage budget and peak hours.
 
+![screenshot](screenshot.jpg)
+
 ## Install
 
 ```bash
