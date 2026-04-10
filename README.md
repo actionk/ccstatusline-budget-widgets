@@ -6,6 +6,8 @@ Custom widgets for [ccstatusline](https://github.com/sirmalloc/ccstatusline) tha
 
 ## Install
 
+Requires [ccstatusline](https://github.com/sirmalloc/ccstatusline) to be already installed.
+
 ```bash
 npx ccstatusline-budget-widgets
 ```
